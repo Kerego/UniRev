@@ -5,17 +5,14 @@ namespace UniRev.Domain.Models
 {
 	public class Review : Entity
 	{
-		public string Comment { get; set; }
 		public int Rating { get; protected set; }
 		public IReviewable Reviewable { get; protected set; }
 		public IReviewer Reviewer { get; protected set; }
 		public DateTimeOffset Timestamp { get; protected set; }
 		public bool IsAnonymous { get; set; }
-		public Review(  IReviewable reviewable,
-						IReviewer reviewer,
-						int rating,
-						string comment = null,
-						bool isAnonymous = false)
+		public string Comment { get; set; }
+
+		public Review(IReviewable reviewable, IReviewer reviewer, int rating)
 		{
 
 			if(reviewable == null)
@@ -28,8 +25,6 @@ namespace UniRev.Domain.Models
 			Reviewer = reviewer;
 			Reviewable = reviewable;
 			Rating = rating;
-			IsAnonymous = isAnonymous;
-			Comment = comment ?? string.Empty;
 			Timestamp = DateTime.Now;
 		}
 

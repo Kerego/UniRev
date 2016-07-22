@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ICourseFactory.cs" />
     <Compile Include="IReviewFactory.cs" />
+    <Compile Include="IReviewOptionBuilder.cs" />
     <Compile Include="IUserFactory.cs" />
     <Compile Include="OptionBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

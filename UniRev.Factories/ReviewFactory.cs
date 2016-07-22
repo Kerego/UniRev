@@ -7,23 +7,23 @@ namespace UniRev.Factories
 {
 	internal class ReviewFactory : IReviewFactory
 	{
-		public OptionBuilder<Review> CreateReview(IReviewable reviewable, IReviewer reviewer, int rating)
+		public IReviewOptionBuilder CreateReview(IReviewable reviewable, IReviewer reviewer, int rating)
 		{
-			var review = new Review(reviewable, reviewer, rating, string.Empty);
+			var review = new Review(reviewable, reviewer, rating);
 			return new ReviewOptionBuilder(review);
 		}
 
-		public class ReviewOptionBuilder : OptionBuilder<Review>
+		public class ReviewOptionBuilder : OptionBuilder<Review>, IReviewOptionBuilder
 		{
 			public ReviewOptionBuilder(Review entity) : base(entity) { }
 
-			public ReviewOptionBuilder WithAnonymous(bool isAnonymous)
+			public IReviewOptionBuilder WithAnonymous(bool isAnonymous)
 			{
 				Entity.IsAnonymous = isAnonymous;
 				return this;
 			}
 			
-			public ReviewOptionBuilder WithComment(string comment)
+			public IReviewOptionBuilder WithComment(string comment)
 			{
 				if(string.IsNullOrWhiteSpace(comment))
 					throw new ArgumentException($"{nameof(comment)} is empty", nameof(comment));

@@ -66,6 +66,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="RegisterDependencies.cs" />
+    <Compile Include="ReviewFactoryTests.cs" />
     <Compile Include="UserFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

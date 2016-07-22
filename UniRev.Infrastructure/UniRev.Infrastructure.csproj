@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1BDCE16F-0F3D-4BC6-937F-A73C2873CAFD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UniRev.Infrastructure</RootNamespace>
+    <AssemblyName>UniRev.Infrastructure</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceLocator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UniRev.Domain.Contexts\UniRev.Domain.Contexts.csproj">
+      <Project>{ec4a33b9-42c8-49ee-aa4f-c9f6d4a01749}</Project>
+      <Name>UniRev.Domain.Contexts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniRev.Domain\UniRev.Domain.csproj">
+      <Project>{76E3C078-4E55-478D-89D6-24BFD267F6D3}</Project>
+      <Name>UniRev.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniRev.Factories.Abstractions\UniRev.Factories.Abstractions.csproj">
+      <Project>{b281f778-3129-4522-9f59-c86ccfb5e5c9}</Project>
+      <Name>UniRev.Factories.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniRev.Factories\UniRev.Factories.csproj">
+      <Project>{e07bb591-9b6d-460e-a5d6-cf4b8956b0b7}</Project>
+      <Name>UniRev.Factories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniRev.Repositories.Interfaces\UniRev.Repositories.Interfaces.csproj">
+      <Project>{9a631840-063d-42e2-9caf-a2562a03770c}</Project>
+      <Name>UniRev.Repositories.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UniRev.Repositories\UniRev.Repositories.csproj">
+      <Project>{c4f9ee35-f499-4bf1-9b20-a2abad03ea6b}</Project>
+      <Name>UniRev.Repositories</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

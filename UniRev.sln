@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniRev.Repositories", "UniR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniRev.Repositories.Interfaces", "UniRev.Repositories.Interfaces\UniRev.Repositories.Interfaces.csproj", "{9A631840-063D-42E2-9CAF-A2562A03770C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniRev.Tests", "UniRev.Tests\UniRev.Tests.csproj", "{3CE785A0-6D9F-47E5-BC43-759C53EF42A7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniRev.Domain.Tests", "UniRev.Domain.Tests\UniRev.Domain.Tests.csproj", "{763C661A-AE23-4E9C-9AAA-835B7FAD6872}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,10 +65,10 @@ Global
 		{9A631840-063D-42E2-9CAF-A2562A03770C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A631840-063D-42E2-9CAF-A2562A03770C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A631840-063D-42E2-9CAF-A2562A03770C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3CE785A0-6D9F-47E5-BC43-759C53EF42A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3CE785A0-6D9F-47E5-BC43-759C53EF42A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3CE785A0-6D9F-47E5-BC43-759C53EF42A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3CE785A0-6D9F-47E5-BC43-759C53EF42A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{763C661A-AE23-4E9C-9AAA-835B7FAD6872}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{763C661A-AE23-4E9C-9AAA-835B7FAD6872}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{763C661A-AE23-4E9C-9AAA-835B7FAD6872}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{763C661A-AE23-4E9C-9AAA-835B7FAD6872}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

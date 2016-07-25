@@ -79,7 +79,7 @@ namespace UniRev.Domain.Tests
 			int rating = 4;
 
 			//act
-			new Review(reviewable, reviewer, rating));
+			new Review(reviewable, reviewer, rating);
 
 			//assert
 			Assert.True(true);

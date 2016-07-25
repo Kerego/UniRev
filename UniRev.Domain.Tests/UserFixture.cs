@@ -23,6 +23,23 @@ namespace UniRev.Domain.Tests
 			Assert.IsType<ArgumentException>(exception);
 		}
 
+		[Theory]
+		[InlineData(null)]
+		[InlineData("  ")]
+		[InlineData("")]
+		public void UserConstructorShouldThrowOnEmptyPassword(string password)
+		{
+			//arrange
+			var name = "name";
+
+			//act
+			var exception = Record.Exception(() => new User(name, password));
+
+			//assert
+			Assert.NotNull(exception);
+			Assert.IsType<ArgumentException>(exception);
+		}
+
 		[Fact]
 		public void UserConstructorShouldCreateOnCorrectValues()
 		{

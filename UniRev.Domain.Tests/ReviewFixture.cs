@@ -70,13 +70,14 @@ namespace UniRev.Domain.Tests
 			Assert.NotNull(exception);
 			Assert.IsType<ArgumentException>(exception);
 		}
-
+		[Fact]
 		public void ReviewConstructorShouldCreateOnCorrectValues()
 		{
 			//arrange
 			IReviewable reviewable = new Course("course", 4);
 			IReviewer reviewer = new Student("name", "password");
 			int rating = 4;
+			
 
 			//act
 			new Review(reviewable, reviewer, rating);

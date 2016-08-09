@@ -14,29 +14,24 @@ namespace UniRev.Console
 	{
 		static void Main(string[] args)
 		{
-			var repo = ServiceLocator.Get<IUserRepository>();
-			var factory = ServiceLocator.Get<IUserFactory>();
+			var userRepository = ServiceLocator.Get<IUserRepository>();
+			var reviewRepository = ServiceLocator.Get<IReviewRepository>();
 
-			var student = factory
-						.CreateStudent("Marian", "Bejenari", "test@test.test", "test")
-						.WithAlmaMater("FAF-131")
-						.Complete();
+			//var seeder = ServiceLocator.Get<Seeder>();
+			//seeder.Seed();
 
-			var lector = factory
-						.CreateLector("Test", "testl", "aha@mail.com", "drowssap")
-						.WithOrganization("UTM")
-						.Complete();
+			System.Console.WriteLine("Users");
+			foreach (var user in userRepository.Read())
+				System.Console.WriteLine($" {user.Id, 4} | {user.FirstName, -10} | {user.Password, -10}");
 
-			repo.Create(student);
-			repo.Create(lector);
-			System.Console.WriteLine("   Id |    Name    | Password ");
-			System.Console.WriteLine("-------------------------------");
-			foreach (var user in repo.Read())
-				System.Console.WriteLine($" {user.Id,4} | {user.FirstName,-10} | {user.Password,-10}");
+			System.Console.WriteLine("Reviews");
+			foreach (var review in reviewRepository.Read())
+				System.Console.WriteLine($" {review.Id, 4} | {review.Rating,-10} | {review.Comment,-10}");
 
 
 			System.Console.Read();
 		}
+
 
 		static Program()
 		{

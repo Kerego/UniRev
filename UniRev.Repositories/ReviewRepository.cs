@@ -4,7 +4,7 @@ using UniRev.Repositories.Interfaces;
 
 namespace UniRev.Repositories
 {
-	public class ReviewRepository : Repository<Review>, IReviewRepository
+	internal class ReviewRepository : Repository<Review>, IReviewRepository
 	{
 		public ReviewRepository(ISession session) : base(session)
 		{

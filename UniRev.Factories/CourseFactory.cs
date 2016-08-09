@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UniRev.Domain.Models;
 using UniRev.Factories.Abstractions;
 using UniRev.Factories.Abstractions.Builders;
@@ -14,11 +15,11 @@ namespace UniRev.Factories
 			if (credits < 1 || credits > 8)
 				throw new ArgumentException($"{nameof(credits)} is out of boundary", nameof(credits));
 
-			var review = new Course(name, credits);
+			var review = new Course(name, credits) { Reviews = new List<Review>() };
 			return new CourseOptionBuilder(review);
 		}
 		
-		public class CourseOptionBuilder : OptionBuilder<Course>, ICourseOptionBuilder
+		private class CourseOptionBuilder : OptionBuilder<Course>, ICourseOptionBuilder
 		{
 			internal CourseOptionBuilder(Course entity) : base(entity) { }
 

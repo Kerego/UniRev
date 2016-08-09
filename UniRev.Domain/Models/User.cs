@@ -9,7 +9,7 @@ namespace UniRev.Domain.Models
 		public virtual string LastName { get; protected set; }
 		public virtual string Email { get; protected set; }
 		public virtual string Password { get; protected set; }
-		public virtual IList<Review> Reviews { get; protected set; }
+		public virtual IList<Review> Reviews { get; protected internal set; }
 
 		protected User()
 		{

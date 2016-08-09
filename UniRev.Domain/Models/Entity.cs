@@ -21,7 +21,7 @@ namespace UniRev.Domain.Models
 			return !(left == right);
 		}
 
-		public virtual bool Equals(Entity other)
+		protected virtual bool Equals(Entity other)
 		{
 			if (ReferenceEquals(other, null))
 				return false;

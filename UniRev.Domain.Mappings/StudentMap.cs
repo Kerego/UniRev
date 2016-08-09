@@ -8,7 +8,7 @@ namespace UniRev.Domain.Mappings
 		public StudentMap()
 		{
 			Table("Students");
-			Map(x => x.AlmaMater).Not.Nullable();
+			Map(x => x.AlmaMater);
 		}
 	}
 }

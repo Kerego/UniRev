@@ -8,8 +8,8 @@ namespace UniRev.Domain.Models
 		public virtual Reviewable Reviewable { get; protected set; }
 		public virtual User User { get; protected set; }
 		public virtual DateTimeOffset Timestamp { get; protected set; }
-		public virtual bool IsAnonymous { get; set; }
-		public virtual string Comment { get; set; }
+		public virtual bool IsAnonymous { get; protected internal set; }
+		public virtual string Comment { get; protected internal set; }
 
 		internal Review(Reviewable reviewable, User reviewer, int rating)
 		{

@@ -23,7 +23,7 @@ namespace UniRev.Infrastructure
 			kernel.Bind<ISession>().ToMethod(context => context.Kernel.Get<ISessionFactory>().OpenSession()).InTransientScope();
 
 			//repositories
-			kernel.Bind<IUserRepository>().To<NUserRepository>().InTransientScope();
+			kernel.Bind<IUserRepository>().To<UserRepository>().InTransientScope();
 			kernel.Bind<IReviewRepository>().To<ReviewRepository>().InTransientScope();
 			kernel.Bind<ICourseRepository>().To<CourseRepository>().InTransientScope();
 		}

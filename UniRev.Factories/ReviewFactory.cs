@@ -11,10 +11,12 @@ namespace UniRev.Factories
 		{
 			Validate(reviewable, reviewer, rating);
 			var review = new Review(reviewable, reviewer, rating);
+			reviewable.Reviews.Add(review);
+			reviewer.Reviews.Add(review);
 			return new ReviewOptionBuilder(review);
 		}
 
-		protected void Validate(Reviewable reviewable, User reviewer, int rating)
+		private void Validate(Reviewable reviewable, User reviewer, int rating)
 		{
 			if (reviewable == null)
 				throw new ArgumentNullException($"{nameof(reviewable)} is null", nameof(reviewable));
@@ -24,7 +26,7 @@ namespace UniRev.Factories
 				throw new ArgumentException($"{nameof(rating)} exceeds boundaries", nameof(rating));
 		}
 
-		public class ReviewOptionBuilder : OptionBuilder<Review>, IReviewOptionBuilder
+		private class ReviewOptionBuilder : OptionBuilder<Review>, IReviewOptionBuilder
 		{
 			public ReviewOptionBuilder(Review entity) : base(entity) { }
 

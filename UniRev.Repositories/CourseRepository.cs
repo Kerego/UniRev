@@ -9,7 +9,7 @@ using UniRev.Repositories.Interfaces;
 
 namespace UniRev.Repositories
 {
-	public class CourseRepository : Repository<Course>, ICourseRepository
+	internal class CourseRepository : Repository<Course>, ICourseRepository
 	{
 		public CourseRepository(ISession session) : base(session)
 		{

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UniRev.Domain.Models;
 using UniRev.Factories.Abstractions;
 using UniRev.Factories.Abstractions.Builders;
@@ -10,14 +11,18 @@ namespace UniRev.Factories
 		public ILectorOptionBuilder CreateLector(string firstName, string lastName, string email, string password)
 		{
 			Validate(firstName, lastName, email, password);
-			var lector = new Lector(firstName, lastName, email, password);
+			var lector = new Lector(firstName, lastName, email, password)
+			{
+				Reviews = new List<Review>(),
+				LectorReviewInfo  = new LectorReviewInfo { Reviews = new List<Review>() }
+			};
 			return new LectorOptionBuilder(lector);
 		}
 
 		public IStudentOptionBuilder CreateStudent(string firstName, string lastName, string email, string password)
 		{
 			Validate(firstName, lastName, email, password);
-			var student = new Student(firstName, lastName, email, password);
+			var student = new Student(firstName, lastName, email, password) { Reviews = new List<Review>() };
 			return new StudentOptionBuilder(student);
 		}
 
@@ -33,7 +38,7 @@ namespace UniRev.Factories
 				throw new ArgumentException($"{nameof(email)} is empty", nameof(email));
 		}
 
-		internal class LectorOptionBuilder : OptionBuilder<Lector>, ILectorOptionBuilder
+		private class LectorOptionBuilder : OptionBuilder<Lector>, ILectorOptionBuilder
 		{
 			internal LectorOptionBuilder(Lector entity) : base(entity) { }
 			public ILectorOptionBuilder WithOrganization(string organization)
@@ -43,7 +48,7 @@ namespace UniRev.Factories
 			}
 		}
 
-		internal class StudentOptionBuilder : OptionBuilder<Student>, IStudentOptionBuilder
+		private class StudentOptionBuilder : OptionBuilder<Student>, IStudentOptionBuilder
 		{
 			internal StudentOptionBuilder(Student entity) : base(entity) { }
 			public IStudentOptionBuilder WithAlmaMater(string group)

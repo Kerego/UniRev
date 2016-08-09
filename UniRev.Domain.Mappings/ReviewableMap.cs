@@ -7,7 +7,7 @@ namespace UniRev.Domain.Mappings
 		public ReviewableMap()
 		{
 			Table("Reviewables");
-			HasMany(x => x.Reviews).ForeignKeyCascadeOnDelete().Inverse();
+			HasMany(x => x.Reviews).Cascade.SaveUpdate().ForeignKeyCascadeOnDelete().Inverse();
 		}
 	}
 }

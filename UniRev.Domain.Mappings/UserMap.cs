@@ -12,7 +12,7 @@ namespace UniRev.Domain.Mappings
 			Map(x => x.LastName).Not.Nullable();
 			Map(x => x.Email).Not.Nullable();
 			Map(x => x.Password).Not.Nullable();
-			HasMany(x => x.Reviews).ForeignKeyCascadeOnDelete().Inverse();
+			HasMany(x => x.Reviews).Cascade.SaveUpdate().ForeignKeyCascadeOnDelete().Inverse();
 		}
 	}
 }

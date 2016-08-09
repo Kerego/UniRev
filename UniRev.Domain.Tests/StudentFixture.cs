@@ -8,8 +8,7 @@ namespace UniRev.Domain.Tests
 {
 	public class StudentFixture
 	{
-
-		IUserFactory userFactory = new UserFactory();
+		readonly IUserFactory _userFactory = new UserFactory();
 
 		[Theory]
 		[InlineData(null)]
@@ -23,7 +22,7 @@ namespace UniRev.Domain.Tests
 			var email = "mail@mail.mail";
 
 			//act
-			var exception = Record.Exception(() => userFactory.CreateStudent(firstname, lastname, email, password));
+			var exception = Record.Exception(() => _userFactory.CreateStudent(firstname, lastname, email, password));
 
 			//assert
 			Assert.NotNull(exception);
@@ -42,7 +41,7 @@ namespace UniRev.Domain.Tests
 			var email = "mail@mail.mail";
 
 			//act
-			var exception = Record.Exception(() => userFactory.CreateStudent(firstname, lastname, email, password));
+			var exception = Record.Exception(() => _userFactory.CreateStudent(firstname, lastname, email, password));
 
 			//assert
 			Assert.NotNull(exception);
@@ -61,7 +60,7 @@ namespace UniRev.Domain.Tests
 			var lastname = "lastname";
 
 			//act
-			var exception = Record.Exception(() => userFactory.CreateStudent(firstname, lastname, email, password));
+			var exception = Record.Exception(() => _userFactory.CreateStudent(firstname, lastname, email, password));
 
 			//assert
 			Assert.NotNull(exception);
@@ -81,7 +80,7 @@ namespace UniRev.Domain.Tests
 			var lastname = "lastname";
 
 			//act
-			var exception = Record.Exception(() => userFactory.CreateStudent(firstname, lastname, email, password));
+			var exception = Record.Exception(() => _userFactory.CreateStudent(firstname, lastname, email, password));
 
 			//assert
 			Assert.NotNull(exception);
@@ -98,7 +97,7 @@ namespace UniRev.Domain.Tests
 			var lastname = "lastname";
 
 			//act
-			var exception = Record.Exception(() => userFactory.CreateStudent(firstname, lastname, email, password));
+			var exception = Record.Exception(() => _userFactory.CreateStudent(firstname, lastname, email, password));
 
 			//assert
 			Assert.True(true);

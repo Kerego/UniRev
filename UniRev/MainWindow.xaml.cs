@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UniRev.Domain.Models;
+using UniRev.Infrastructure;
+using UniRev.Repositories.Interfaces;
 
 namespace UniRev
 {
@@ -23,6 +26,14 @@ namespace UniRev
 		public MainWindow()
 		{
 			InitializeComponent();
+			this.Loaded += WindowLoaded;
+		}
+
+		private void WindowLoaded(object sender, RoutedEventArgs e)
+		{
+			ServiceLocator.RegisterAll();
+			CreateTab.DataContext = ServiceLocator.Get<CreateViewModel>();
+			ReadTab.DataContext = ServiceLocator.Get<ReadViewModel>();
 		}
 	}
 }

@@ -1,23 +1,34 @@
 using System;
+using System.Collections.Generic;
 
 namespace UniRev.Domain.Models
 {
-	public class User : NamedEntity
+	public abstract class User : Entity
 	{
-		public string Password { get; protected set; }
+		public virtual string FirstName { get; protected set; }
+		public virtual string LastName { get; protected set; }
+		public virtual string Email { get; protected set; }
+		public virtual string Password { get; protected set; }
+		public virtual IList<Review> Reviews { get; protected set; }
 
 		protected User()
 		{
 		}
-		public User(string name, string password)
+
+		internal User(string firstName, string lastName, string email, string password)
 		{
-			if(string.IsNullOrWhiteSpace(name))
-				throw new ArgumentException($"{nameof(name)} is empty", nameof(name));
-			if(string.IsNullOrWhiteSpace(password))
-				throw new ArgumentException($"{nameof(password)} is empty", nameof(password));
-			Name = name;
+			FirstName = firstName;
+			LastName = lastName;
+			Email = email;
 			var hash = password; //hash
 			Password = hash;
+		}
+
+		public virtual void SetPassword(string password)
+		{
+			if (string.IsNullOrWhiteSpace(password))
+				throw new ArgumentException($"{nameof(password)} is empty", nameof(password));
+			Password = password;
 		}
 	}
 }

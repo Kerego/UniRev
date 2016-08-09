@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+  assembly="UniRev.Domain.Mappings"
+  namespace="UniRev.Domain.Mappings">
+  <database-object>
+    <create>
+      ALTER TABLE Courses ADD CONSTRAINT CreditsBetween1And12 CHECK (Credits between 1 AND 12)
+      ALTER TABLE Reviews ADD CONSTRAINT RatingBetween1And5 CHECK (Rating between 1 AND 5)
+    </create>
+    <drop>
+      if exists (select 1
+                from   sys.objects
+                where  object_id = OBJECT_ID(N'[CreditsBetween1And12]')
+                AND parent_object_id = OBJECT_ID('Courses'))
+                alter table Lectors drop constraint CreditsBetween1And12;
+
+
+      if exists (select 1
+                from   sys.objects
+                where  object_id = OBJECT_ID(N'[RatingBetween1And5]')
+                AND parent_object_id = OBJECT_ID('Reviews'))
+                alter table Lectors drop constraint RatingBetween1And5;
+
+
+    </drop>
+  </database-object>
+</hibernate-mapping>

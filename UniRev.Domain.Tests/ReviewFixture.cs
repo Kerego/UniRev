@@ -1,22 +1,27 @@
 ﻿using System;
-using UniRev.Domain.Interfaces;
 using UniRev.Domain.Models;
+using UniRev.Factories;
+using UniRev.Factories.Abstractions;
 using Xunit;
 
 namespace UniRev.Domain.Tests
 {
 	public class ReviewFixture
 	{
+		IUserFactory userFactory = new UserFactory();
+		IReviewFactory reviewFactory = new ReviewFactory();
+		ICourseFactory courseFactory = new CourseFactory();
+
 		[Fact]
 		public void ReviewConstructorShouldThrowOnNullReviewable()
 		{
 			//arrange
-			IReviewable reviewable = null;
-			IReviewer reviewer = new Student("name", "password");
+			Reviewable reviewable = null;
+			User reviewer = userFactory.CreateStudent("name", "ln", "a@d.c", "password").Complete();
 			int rating = 4;
 
 			//act
-			var exception = Record.Exception(() => new Review(reviewable, reviewer, rating));
+			var exception = Record.Exception(() => reviewFactory.CreateReview(reviewable, reviewer, rating));
 
 			//assert
 			Assert.NotNull(exception);
@@ -24,15 +29,15 @@ namespace UniRev.Domain.Tests
 		}
 
 		[Fact]
-		public void ReviewConstructorShouldThrowOnNullReviewer()
+		public void ReviewConstructorShouldThrowOnNullUser()
 		{
 			//arrange
-			IReviewable reviewable = new Course("course", 4);
-			IReviewer reviewer = null;
+			Reviewable reviewable = courseFactory.CreateCourse("course", 4).Complete();
+			User reviewer = null;
 			int rating = 4;
 
 			//act
-			var exception = Record.Exception(() => new Review(reviewable, reviewer, rating));
+			var exception = Record.Exception(() => reviewFactory.CreateReview(reviewable, reviewer, rating));
 
 			//assert
 			Assert.NotNull(exception);
@@ -43,12 +48,12 @@ namespace UniRev.Domain.Tests
 		public void ReviewConstructorShouldThrowOnNegativeRating()
 		{
 			//arrange
-			IReviewable reviewable = new Course("course", 4);
-			IReviewer reviewer = new Student("name", "password");
+			Reviewable reviewable = courseFactory.CreateCourse("course", 4).Complete();
+			User reviewer = userFactory.CreateStudent("name", "ln", "a@d.c", "password").Complete();
 			int rating = -2;
 
 			//act
-			var exception = Record.Exception(() => new Review(reviewable, reviewer, rating));
+			var exception = Record.Exception(() => reviewFactory.CreateReview(reviewable, reviewer, rating));
 
 			//assert
 			Assert.NotNull(exception);
@@ -59,28 +64,29 @@ namespace UniRev.Domain.Tests
 		public void ReviewConstructorShouldThrowOnTooBigRating()
 		{
 			//arrange
-			IReviewable reviewable = new Course("course", 4);
-			IReviewer reviewer = new Student("name", "password");
+			Reviewable reviewable = courseFactory.CreateCourse("course", 4).Complete();
+			User reviewer = userFactory.CreateStudent("name", "ln", "a@d.c", "password").Complete();
 			int rating = 7;
 
 			//act
-			var exception = Record.Exception(() => new Review(reviewable, reviewer, rating));
+			var exception = Record.Exception(() => reviewFactory.CreateReview(reviewable, reviewer, rating));
 
 			//assert
 			Assert.NotNull(exception);
 			Assert.IsType<ArgumentException>(exception);
 		}
+
 		[Fact]
 		public void ReviewConstructorShouldCreateOnCorrectValues()
 		{
 			//arrange
-			IReviewable reviewable = new Course("course", 4);
-			IReviewer reviewer = new Student("name", "password");
+			Reviewable reviewable = courseFactory.CreateCourse("course", 4).Complete();
+			User reviewer = userFactory.CreateStudent("name", "ln", "a@d.c", "password").Complete();
 			int rating = 4;
-			
+
 
 			//act
-			new Review(reviewable, reviewer, rating);
+			reviewFactory.CreateReview(reviewable, reviewer, rating);
 
 			//assert
 			Assert.True(true);

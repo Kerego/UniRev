@@ -1,15 +1,17 @@
+using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 using UniRev.Domain.Models;
 
 namespace UniRev.Repositories.Interfaces
 {
-	public interface IRepository<T> where T : Entity
+	public interface IRepository<T> : IDisposable where T : Entity 
 	{
-		Task<T> GetByIdAsync(int id);
+		T GetById(long id);
+		IEnumerable<T> Read(Expression<Func<T, bool>> filter);
 		IEnumerable<T> Read();
-		Task CreateAsync(T review);
-		Task UpdateAsync(T review);
-		Task DeleteAsync(T review);
+		void Create(T entity);
+		void Update(T entity);
+		void Delete(T entity);
 	}
 }

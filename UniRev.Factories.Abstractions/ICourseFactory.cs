@@ -1,10 +1,9 @@
-﻿using UniRev.Domain.Models;
-using UniRev.Factories.Abstractions;
+﻿using UniRev.Factories.Abstractions.Builders;
 
 namespace UniRev.Factories.Abstractions
 {
 	public interface ICourseFactory
 	{
-		OptionBuilder<Course> CreateCourse(string name, int credits);
+		ICourseOptionBuilder CreateCourse(string name, int credits);
 	}
 }

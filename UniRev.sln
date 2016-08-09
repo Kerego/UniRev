@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniRev", "UniRev\UniRev.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniRev.Domain", "UniRev.Domain\UniRev.Domain.csproj", "{76E3C078-4E55-478D-89D6-24BFD267F6D3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniRev.Domain.Contexts", "UniRev.Domain.Contexts\UniRev.Domain.Contexts.csproj", "{EC4A33B9-42C8-49EE-AA4F-C9F6D4A01749}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniRev.Web", "UniRev.Web\UniRev.Web.csproj", "{EC00F47B-74B4-4F51-901B-1AED6F7F2E06}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniRev.Factories", "UniRev.Factories\UniRev.Factories.csproj", "{E07BB591-9B6D-460E-A5D6-CF4B8956B0B7}"
@@ -22,6 +20,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniRev.Repositories.Interfaces", "UniRev.Repositories.Interfaces\UniRev.Repositories.Interfaces.csproj", "{9A631840-063D-42E2-9CAF-A2562A03770C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniRev.Domain.Tests", "UniRev.Domain.Tests\UniRev.Domain.Tests.csproj", "{763C661A-AE23-4E9C-9AAA-835B7FAD6872}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniRev.Domain.Mappings", "UniRev.Domain.Mappings\UniRev.Domain.Mappings.csproj", "{D3F28977-02FE-4761-BEDC-B79004DAF4E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniRev.Console", "UniRev.Console\UniRev.Console.csproj", "{044C8DD4-8A66-4514-B7B3-8B9A653B5C8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +39,6 @@ Global
 		{76E3C078-4E55-478D-89D6-24BFD267F6D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76E3C078-4E55-478D-89D6-24BFD267F6D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76E3C078-4E55-478D-89D6-24BFD267F6D3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EC4A33B9-42C8-49EE-AA4F-C9F6D4A01749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EC4A33B9-42C8-49EE-AA4F-C9F6D4A01749}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EC4A33B9-42C8-49EE-AA4F-C9F6D4A01749}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EC4A33B9-42C8-49EE-AA4F-C9F6D4A01749}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EC00F47B-74B4-4F51-901B-1AED6F7F2E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EC00F47B-74B4-4F51-901B-1AED6F7F2E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC00F47B-74B4-4F51-901B-1AED6F7F2E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,6 +67,14 @@ Global
 		{763C661A-AE23-4E9C-9AAA-835B7FAD6872}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{763C661A-AE23-4E9C-9AAA-835B7FAD6872}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{763C661A-AE23-4E9C-9AAA-835B7FAD6872}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3F28977-02FE-4761-BEDC-B79004DAF4E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3F28977-02FE-4761-BEDC-B79004DAF4E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3F28977-02FE-4761-BEDC-B79004DAF4E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3F28977-02FE-4761-BEDC-B79004DAF4E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{044C8DD4-8A66-4514-B7B3-8B9A653B5C8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{044C8DD4-8A66-4514-B7B3-8B9A653B5C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{044C8DD4-8A66-4514-B7B3-8B9A653B5C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{044C8DD4-8A66-4514-B7B3-8B9A653B5C8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

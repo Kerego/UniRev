@@ -1,6 +1,5 @@
-﻿using Ninject;
-using UniRev.Domain.Contexts;
-using UniRev.Domain.Models;
+﻿using NHibernate;
+using Ninject;
 using UniRev.Factories;
 using UniRev.Factories.Abstractions;
 using UniRev.Repositories;
@@ -17,8 +16,10 @@ namespace UniRev.Infrastructure
 			kernel.Bind<ICourseFactory>().To<CourseFactory>().InSingletonScope();
 			kernel.Bind<IUserFactory>().To<UserFactory>().InSingletonScope();
 			kernel.Bind<IReviewFactory>().To<ReviewFactory>().InSingletonScope();
-			kernel.Bind<UniRevContext>().ToSelf().InSingletonScope();
-			kernel.Bind<IRepository<Review>>().To<ReviewRepository>().InSingletonScope();
+			kernel.Bind<ISessionFactory>().ToMethod(_ => NHibernateConfiguration.Configure()).InSingletonScope();
+
+			kernel.Bind<ISession>().ToMethod(context => context.Kernel.Get<ISessionFactory>().OpenSession()).InTransientScope();
+			kernel.Bind<IUserRepository>().To<NUserRepository>().InTransientScope();
 		}
 
 		public static T Get<T>() where T : class => kernel.Get<T>();

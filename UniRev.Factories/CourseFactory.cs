@@ -1,23 +1,34 @@
 using System;
 using UniRev.Domain.Models;
 using UniRev.Factories.Abstractions;
+using UniRev.Factories.Abstractions.Builders;
 
 namespace UniRev.Factories
 {
 	internal class CourseFactory : ICourseFactory
 	{
-
-		public OptionBuilder<Course> CreateCourse(string name, int credits)
+		public ICourseOptionBuilder CreateCourse(string name, int credits)
 		{
+			if (string.IsNullOrWhiteSpace(name))
+				throw new ArgumentException($"{nameof(name)} is empty", nameof(name));
+			if (credits < 1 || credits > 8)
+				throw new ArgumentException($"{nameof(credits)} is out of boundary", nameof(credits));
+
 			var review = new Course(name, credits);
 			return new CourseOptionBuilder(review);
 		}
 		
-		public class CourseOptionBuilder : OptionBuilder<Course>
+		public class CourseOptionBuilder : OptionBuilder<Course>, ICourseOptionBuilder
 		{
-			public CourseOptionBuilder(Course entity) : base(entity) { }
+			internal CourseOptionBuilder(Course entity) : base(entity) { }
 
-			public CourseOptionBuilder WithDuration(TimeSpan duration)
+			public ICourseOptionBuilder WithDescription(string description)
+			{
+				Entity.Description = description;
+				return this;
+			}
+
+			public ICourseOptionBuilder WithDuration(TimeSpan duration)
 			{
 				if(duration.TotalHours < 1 || duration.TotalHours > 160)
 					throw new ArgumentException("{nameof(duration)} out of boundaries", nameof(duration));

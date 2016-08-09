@@ -3,8 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using UniRev.Domain.Models;
+using UniRev.Repositories.Interfaces;
 
-namespace UniRev.Repositories.Interfaces
+namespace UniRev.Repositories
 {
 	public abstract class Repository<T> : IRepository<T> where T : Entity
 	{

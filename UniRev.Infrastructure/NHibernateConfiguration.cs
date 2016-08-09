@@ -1,5 +1,4 @@
-﻿using FluentNHibernate.Automapping;
-using FluentNHibernate.Cfg;
+﻿using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using HibernatingRhinos.Profiler.Appender.NHibernate;
 using NHibernate;
@@ -27,6 +26,7 @@ namespace UniRev.Infrastructure
 					x.HbmMappings.AddFromAssembly(assembly);
 				})
 				.ExposeConfiguration(x => new SchemaUpdate(x).Execute(false, true));
+
 			return configuration.BuildSessionFactory();
 		}
 	}

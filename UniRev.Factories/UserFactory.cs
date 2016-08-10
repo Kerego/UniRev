@@ -14,9 +14,15 @@ namespace UniRev.Factories
 			var lector = new Lector(firstName, lastName, email, password)
 			{
 				Reviews = new List<Review>(),
+				Lessons = new List<Lesson>(),
 				LectorReviewInfo  = new LectorReviewInfo { Reviews = new List<Review>() }
 			};
 			return new LectorOptionBuilder(lector);
+		}
+
+		public IStudentOptionBuilder ModifyStudent(Student student)
+		{
+			return new StudentOptionBuilder(student);
 		}
 
 		public IStudentOptionBuilder CreateStudent(string firstName, string lastName, string email, string password)

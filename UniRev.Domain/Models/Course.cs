@@ -5,7 +5,7 @@ namespace UniRev.Domain.Models
 {
 	public class Course : Reviewable
 	{
-		public virtual IList<Lesson> Lessons { get; protected set; }
+		public virtual IList<Lesson> Lessons { get; protected internal set; }
 		public virtual string Name { get; protected set; }
 		public virtual int Credits { get; protected set; }
 

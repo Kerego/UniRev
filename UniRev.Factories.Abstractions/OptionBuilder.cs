@@ -4,7 +4,7 @@ namespace UniRev.Factories.Abstractions
 	{
 		protected T Entity { get; }
 
-		public OptionBuilder(T entity)
+		protected OptionBuilder(T entity)
 		{
 			Entity = entity;
 		}

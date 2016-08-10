@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CourseFactory.cs" />
+    <Compile Include="LessonFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReviewFactory.cs" />
     <Compile Include="UserFactory.cs" />

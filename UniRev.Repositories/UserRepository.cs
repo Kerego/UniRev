@@ -12,6 +12,7 @@ namespace UniRev.Repositories
 		{
 			var user = _session.Get<User>(id);
 			user?.SetPassword(newPassword);
+			_session.Update(user);
 		}
 	}
 }

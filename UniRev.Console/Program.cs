@@ -7,6 +7,7 @@ using UniRev.Domain.Models;
 using UniRev.Factories.Abstractions;
 using UniRev.Infrastructure;
 using UniRev.Repositories.Interfaces;
+using static System.Console;
 
 namespace UniRev.Console
 {
@@ -16,22 +17,21 @@ namespace UniRev.Console
 		{
 			var userRepository = ServiceLocator.Get<IUserRepository>();
 			var reviewRepository = ServiceLocator.Get<IReviewRepository>();
-
+			var student = (Student)userRepository.GetById(1);
+			
 			//var seeder = ServiceLocator.Get<Seeder>();
 			//seeder.Seed();
 
-			System.Console.WriteLine("Users");
+			WriteLine("Users");
 			foreach (var user in userRepository.Read())
-				System.Console.WriteLine($" {user.Id, 4} | {user.FirstName, -10} | {user.Password, -10}");
+				WriteLine($" {user.Id, 4} | {user.FirstName, -10} | {user.Password, -10} | {(user as Student)?.AlmaMater ?? (user as Lector)?.Organization ?? "Unset" } ");
 
-			System.Console.WriteLine("Reviews");
+			WriteLine("Reviews");
 			foreach (var review in reviewRepository.Read())
-				System.Console.WriteLine($" {review.Id, 4} | {review.Rating,-10} | {review.Comment,-10}");
+				WriteLine($" {review.Id, 4} | {review.Rating, -10} | {review.Comment, -10}");
 
-
-			System.Console.Read();
+			ReadKey();
 		}
-
 
 		static Program()
 		{

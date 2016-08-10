@@ -9,7 +9,7 @@ namespace UniRev.Infrastructure
 {
 	public static class ServiceLocator
 	{
-		static readonly IKernel kernel = new StandardKernel();
+		private static readonly IKernel kernel = new StandardKernel();
 
 		public static void RegisterAll()
 		{

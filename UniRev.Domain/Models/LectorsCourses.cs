@@ -7,7 +7,14 @@ namespace UniRev.Domain.Models
 	{
 		public virtual Lector Lector { get; protected set; }
 		public virtual Course Course { get; protected set; }
-		public virtual IList<Schedule> Schedules { get; protected set; }
+		public virtual IList<Schedule> Schedules { get; protected internal set; }
+
+
+		internal Lesson(Lector lector, Course course)
+		{
+			Lector = lector;
+			Course = course;
+		}
 
 		protected Lesson() { }
 	}

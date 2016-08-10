@@ -1,4 +1,5 @@
-﻿using UniRev.Factories.Abstractions.Builders;
+﻿using UniRev.Domain.Models;
+using UniRev.Factories.Abstractions.Builders;
 
 namespace UniRev.Factories.Abstractions
 {
@@ -6,5 +7,6 @@ namespace UniRev.Factories.Abstractions
 	{
 		IStudentOptionBuilder CreateStudent(string firstName, string lastName, string email, string password);
 		ILectorOptionBuilder CreateLector(string firstName, string lastName, string email, string password);
+		IStudentOptionBuilder ModifyStudent(Student student);
 	}
 }

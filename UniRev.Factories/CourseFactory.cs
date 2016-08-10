@@ -15,7 +15,11 @@ namespace UniRev.Factories
 			if (credits < 1 || credits > 8)
 				throw new ArgumentException($"{nameof(credits)} is out of boundary", nameof(credits));
 
-			var review = new Course(name, credits) { Reviews = new List<Review>() };
+			var review = new Course(name, credits)
+			{
+				Reviews = new List<Review>(),
+				Lessons = new List<Lesson>()
+			};
 			return new CourseOptionBuilder(review);
 		}
 		

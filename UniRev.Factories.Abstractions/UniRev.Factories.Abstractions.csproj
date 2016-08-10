@@ -47,10 +47,12 @@
   <ItemGroup>
     <Compile Include="Builders\ICourseOptionBuilder.cs" />
     <Compile Include="Builders\ILectorOptionBuilder.cs" />
+    <Compile Include="Builders\ILessonOptionBuilder.cs" />
     <Compile Include="Builders\IOptionBuilder.cs" />
     <Compile Include="Builders\IReviewOptionBuilder.cs" />
     <Compile Include="Builders\IStudentOptionBuilder.cs" />
     <Compile Include="ICourseFactory.cs" />
+    <Compile Include="ILessonFactory.cs" />
     <Compile Include="IReviewFactory.cs" />
     <Compile Include="IUserFactory.cs" />
     <Compile Include="OptionBuilder.cs" />

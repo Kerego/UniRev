@@ -7,7 +7,7 @@ namespace UniRev.Domain.Models
 	{
 		public virtual string Organization { get; protected internal set; }
 		public virtual LectorReviewInfo LectorReviewInfo { get; protected internal set; }
-		public virtual IList<Lesson> Lessons { get; set; }
+		public virtual IList<Lesson> Lessons { get; protected internal set; }
 
 		internal Lector(string firstName, string lastName, string email, string password) : base(firstName, lastName, email, password)
 		{

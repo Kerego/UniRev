@@ -36,13 +36,19 @@ namespace UniRev.Repositories
 
 		public void Dispose() =>_session.Dispose();
 
-		public virtual T GetById(long id) => _session.Get<T>(id);
+		public T GetById(long id) => GetById<T>(id);
 
-		public virtual IEnumerable<T> Read() => _session.QueryOver<T>().List();
+		public virtual TK GetById<TK>(long id) where TK : T => _session.Get<TK>(id);
 
-		public virtual IEnumerable<T> Read(Expression<Func<T, bool>> filter)
+		public IList<T> Read() => Read<T>();
+
+		public IList<T> Read(Expression<Func<T, bool>> filter) => Read<T>(filter);
+
+		public virtual IList<TK> Read<TK>() where TK : T => _session.QueryOver<TK>().List();
+
+		public virtual IList<TK> Read<TK>(Expression<Func<TK, bool>> filter) where TK : T
 		{
-			return _session.QueryOver<T>().Where(filter).List();
+			return _session.QueryOver<TK>().Where(filter).List();
 		}
 
 		public virtual void Update(T entity)

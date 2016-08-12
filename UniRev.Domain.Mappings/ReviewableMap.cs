@@ -1,4 +1,5 @@
-﻿using UniRev.Domain.Models;
+﻿using FluentNHibernate.Mapping;
+using UniRev.Domain.Models;
 
 namespace UniRev.Domain.Mappings
 {
@@ -7,6 +8,7 @@ namespace UniRev.Domain.Mappings
 		public ReviewableMap()
 		{
 			Table("Reviewables");
+			Map(x => x.ShortDescription).Not.Nullable();
 			HasMany(x => x.Reviews).Cascade.SaveUpdate().ForeignKeyCascadeOnDelete().Inverse();
 		}
 	}

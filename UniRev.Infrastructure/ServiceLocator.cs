@@ -17,12 +17,14 @@ namespace UniRev.Infrastructure
 			kernel.Bind<ICourseFactory>().To<CourseFactory>().InSingletonScope();
 			kernel.Bind<IUserFactory>().To<UserFactory>().InSingletonScope();
 			kernel.Bind<IReviewFactory>().To<ReviewFactory>().InSingletonScope();
+			kernel.Bind<ILessonFactory>().To<LessonFactory>().InSingletonScope();
 			
 			//nhibernate
 			kernel.Bind<ISessionFactory>().ToMethod(_ => NHibernateConfiguration.Configure()).InSingletonScope();
 			kernel.Bind<ISession>().ToMethod(context => context.Kernel.Get<ISessionFactory>().OpenSession()).InTransientScope();
 
 			//repositories
+			kernel.Bind<ILessonRepository>().To<LessonRepository>().InTransientScope();
 			kernel.Bind<IUserRepository>().To<UserRepository>().InTransientScope();
 			kernel.Bind<IReviewRepository>().To<ReviewRepository>().InTransientScope();
 			kernel.Bind<ICourseRepository>().To<CourseRepository>().InTransientScope();

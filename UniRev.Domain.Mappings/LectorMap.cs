@@ -8,7 +8,7 @@ namespace UniRev.Domain.Mappings
 		public LectorMap()
 		{
 			Table("Lectors");
-			Map(x => x.Organization).Not.Nullable();
+			Map(x => x.Organization);
 			References(x => x.LectorReviewInfo).Cascade.SaveUpdate().Unique().Not.Nullable();
 			HasMany(x => x.Lessons).Cascade.SaveUpdate().Not.KeyNullable().ForeignKeyCascadeOnDelete().Inverse();
 		}

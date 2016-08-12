@@ -45,6 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\LessonDetailsDto.cs" />
+    <Compile Include="Dtos\ReviewableDetailsDto.cs" />
+    <Compile Include="Dtos\ReviewDetailsDto.cs" />
+    <Compile Include="Dtos\NamedUserDto.cs" />
+    <Compile Include="Dtos\UserReviewsDetailsDto.cs" />
     <Compile Include="Models\Lector.cs" />
     <Compile Include="Models\LectorReviewInfo.cs" />
     <Compile Include="Models\LectorsCourses.cs" />
@@ -74,7 +79,6 @@
     <Analyzer Include="..\packages\System.Security.Cryptography.Hashing.Algorithms.Analyzers.1.1.0\analyzers\dotnet\cs\System.Security.Cryptography.Hashing.Algorithms.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Dtos\" />
     <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

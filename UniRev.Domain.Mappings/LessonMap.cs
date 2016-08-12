@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentNHibernate.Mapping;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using UniRev.Domain.Models;
 
 namespace UniRev.Domain.Mappings
 {
-	public class LessonMap : EntityMap<Lesson>
+	public class LessonMap : SubclassMap<Lesson>
 	{
 		public LessonMap()
 		{

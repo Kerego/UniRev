@@ -11,6 +11,12 @@ namespace UniRev.Domain.Models
 
 		internal Lector(string firstName, string lastName, string email, string password) : base(firstName, lastName, email, password)
 		{
+			Lessons = new List<Lesson>();
+			LectorReviewInfo = new LectorReviewInfo
+			{
+				Reviews = new List<Review>(),
+				ShortDescription = $"Lector {firstName} {lastName}"
+			};
 		}
 
 		protected Lector()

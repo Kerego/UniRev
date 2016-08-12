@@ -22,6 +22,7 @@ namespace UniRev.Domain.Models
 			Email = email;
 			var hash = password; //hash
 			Password = hash;
+			Reviews = new List<Review>();
 		}
 
 		public virtual void SetPassword(string password)

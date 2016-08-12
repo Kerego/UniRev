@@ -11,12 +11,7 @@ namespace UniRev.Factories
 		public ILectorOptionBuilder CreateLector(string firstName, string lastName, string email, string password)
 		{
 			Validate(firstName, lastName, email, password);
-			var lector = new Lector(firstName, lastName, email, password)
-			{
-				Reviews = new List<Review>(),
-				Lessons = new List<Lesson>(),
-				LectorReviewInfo  = new LectorReviewInfo { Reviews = new List<Review>() }
-			};
+			var lector = new Lector(firstName, lastName, email, password);
 			return new LectorOptionBuilder(lector);
 		}
 
@@ -28,7 +23,7 @@ namespace UniRev.Factories
 		public IStudentOptionBuilder CreateStudent(string firstName, string lastName, string email, string password)
 		{
 			Validate(firstName, lastName, email, password);
-			var student = new Student(firstName, lastName, email, password) { Reviews = new List<Review>() };
+			var student = new Student(firstName, lastName, email, password);
 			return new StudentOptionBuilder(student);
 		}
 

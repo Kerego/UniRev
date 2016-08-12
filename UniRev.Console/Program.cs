@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UniRev.Domain.Models;
-using UniRev.Factories.Abstractions;
-using UniRev.Infrastructure;
+﻿using UniRev.Infrastructure;
 using UniRev.Repositories.Interfaces;
 using static System.Console;
 
@@ -17,18 +10,32 @@ namespace UniRev.Console
 		{
 			var userRepository = ServiceLocator.Get<IUserRepository>();
 			var reviewRepository = ServiceLocator.Get<IReviewRepository>();
-			var student = (Student)userRepository.GetById(1);
-			
+			var lessonRepository = ServiceLocator.Get<ILessonRepository>();
+
+
 			//var seeder = ServiceLocator.Get<Seeder>();
 			//seeder.Seed();
 
-			WriteLine("Users");
-			foreach (var user in userRepository.Read())
-				WriteLine($" {user.Id, 4} | {user.FirstName, -10} | {user.Password, -10} | {(user as Student)?.AlmaMater ?? (user as Lector)?.Organization ?? "Unset" } ");
+
+			WriteLine("Statistics");
+			foreach (var review in userRepository.GetUserReviewStats())
+				WriteLine($"Id: {review.UserId,-3} | Name: {review.Username,-30} | Count: {review.ReviewsCount,-3} | Average Rating: {review.AverageRating,-3}");
 
 			WriteLine("Reviews");
-			foreach (var review in reviewRepository.Read())
-				WriteLine($" {review.Id, 4} | {review.Rating, -10} | {review.Comment, -10}");
+			foreach (var review in reviewRepository.GetReviewsDetails())
+				WriteLine($"Reviewer: {review.Reviewer,-20} | Reviewable: {review.Reviewable,-30} | Comment: {review.Comment,-10} | Rating: {review.Rating,-5}");
+
+			WriteLine("Lessons from top lectors");
+			foreach (var lesson in lessonRepository.GetLessonsByLectorRating(1))
+				WriteLine($"Lector: {lesson.LectorName,-25} | Course: {lesson.CourseName,-10} | Rating: {lesson.Rating, -5}");
+
+			WriteLine("Lessons");
+			foreach (var lesson in lessonRepository.GetLessons())
+				WriteLine($"Lector: {lesson.LectorName,-20} | Course: {lesson.CourseName,-10} | Rating: {lesson.Rating, -5}");
+
+			WriteLine("Reviewables");
+			foreach (var reviewable in reviewRepository.GetReviewableDetails())
+				WriteLine($"Reviewable: {reviewable.Description,-35} | Reviews: {reviewable.Reviews} ");
 
 			ReadKey();
 		}

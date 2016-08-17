@@ -59,7 +59,7 @@ namespace UniRev.Repositories
 					.SelectGroup(() => course.Name)
 						.WithAlias(() => dto.CourseName)
 					.SelectAvg(() => review.Rating)
-						.WithAlias(() => dto.Rating))
+						.WithAlias(() => dto.LessonRating))
 				.TransformUsing(Transformers.AliasToBean<LessonDetailsDto>())
 				.List<LessonDetailsDto>();
 			return query;

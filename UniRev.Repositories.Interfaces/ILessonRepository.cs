@@ -8,5 +8,6 @@ namespace UniRev.Repositories.Interfaces
 	{
 		IList<LessonDetailsDto> GetLessonsByLectorRating(double minimalLectorRating);
 		IList<LessonDetailsDto> GetLessons();
+		
 	}
 }

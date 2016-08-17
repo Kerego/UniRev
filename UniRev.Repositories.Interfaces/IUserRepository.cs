@@ -8,9 +8,9 @@ namespace UniRev.Repositories.Interfaces
 	public interface IUserRepository : IRepository<User>
 	{
 		void ChangePassword(long id, string newPassword);
-
 		IList<UserReviewsDetailsDto> GetUserReviewStats();
-
-		IList<Lector> GetBestTeacherForCourse(long courseId);
+		NamedUserDto GetBestLectorForCourse(long courseId);
+		IList<NamedUserDto> GetLectorsReviewedWithRating(int rating);
+		StatisticsDto GetStatistics();
 	}
 }

@@ -12,5 +12,6 @@ namespace UniRev.Repositories.Interfaces
 	{
 		IList<ReviewDetailsDto> GetReviewsDetails();
 		IList<ReviewableDetailsDto> GetReviewableDetails();
+		ReviewDetailsDto GetMostRecentReview(long reviewableId);
 	}
 }

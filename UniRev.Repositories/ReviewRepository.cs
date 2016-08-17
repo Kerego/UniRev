@@ -6,6 +6,7 @@ using UniRev.Domain.Dtos;
 using UniRev.Domain.Models;
 using UniRev.Repositories.Interfaces;
 using static NHibernate.Criterion.Projections;
+using System;
 
 namespace UniRev.Repositories
 {
@@ -13,6 +14,33 @@ namespace UniRev.Repositories
 	{
 		public ReviewRepository(ISession session) : base(session)
 		{
+		}
+
+		public ReviewDetailsDto GetMostRecentReview(long reviewableId)
+		{
+			Review review = null;
+			User user = null;
+			ReviewDetailsDto dto = null;
+			
+
+			var dates = QueryOver.Of<Review>()
+						.Where(x => x.Reviewable.Id == reviewableId)
+						.Select(x => x.Timestamp);
+
+			var query = _session.
+				QueryOver(() => review)
+				.JoinAlias(() => review.User, () => user)
+				.Where(() => review.Reviewable.Id == reviewableId)
+				.WithSubquery.WhereAll(() => review.Timestamp >= dates.As<DateTimeOffset>())
+				.SelectList(list => list
+					.Select(() => user.FirstName).WithAlias(() => dto.ReviewerFirstName)
+					.Select(() => user.LastName).WithAlias(() => dto.ReviewerLastName)
+					.Select(() => review.Rating).WithAlias(() => dto.Rating)
+					.Select(() => review.Comment).WithAlias(() => dto.Comment))
+				.TransformUsing(Transformers.AliasToBean<ReviewDetailsDto>())
+				.Take(1)
+				.SingleOrDefault<ReviewDetailsDto>();
+			return query;
 		}
 
 		public IList<ReviewableDetailsDto> GetReviewableDetails()

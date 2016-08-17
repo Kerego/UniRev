@@ -49,6 +49,7 @@
     <Compile Include="Dtos\ReviewableDetailsDto.cs" />
     <Compile Include="Dtos\ReviewDetailsDto.cs" />
     <Compile Include="Dtos\NamedUserDto.cs" />
+    <Compile Include="Dtos\StatisticsDto.cs" />
     <Compile Include="Dtos\UserReviewsDetailsDto.cs" />
     <Compile Include="Models\Lector.cs" />
     <Compile Include="Models\LectorReviewInfo.cs" />

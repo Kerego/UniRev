@@ -14,14 +14,15 @@ namespace UniRev.Infrastructure
 		public static void RegisterAll()
 		{
 			//factories
+
 			kernel.Bind<ICourseFactory>().To<CourseFactory>().InSingletonScope();
 			kernel.Bind<IUserFactory>().To<UserFactory>().InSingletonScope();
 			kernel.Bind<IReviewFactory>().To<ReviewFactory>().InSingletonScope();
 			kernel.Bind<ILessonFactory>().To<LessonFactory>().InSingletonScope();
-			
+
 			//nhibernate
 			kernel.Bind<ISessionFactory>().ToMethod(_ => NHibernateConfiguration.Configure()).InSingletonScope();
-			kernel.Bind<ISession>().ToMethod(context => context.Kernel.Get<ISessionFactory>().OpenSession()).InTransientScope();
+			kernel.Bind<ISession>().ToMethod(context => context.Kernel.Get<ISessionFactory>().OpenSession()).InThreadScope();
 
 			//repositories
 			kernel.Bind<ILessonRepository>().To<LessonRepository>().InTransientScope();

@@ -6,6 +6,6 @@
 		public string LectorLastName { get; set; }
 		public string LectorName => $"{LectorFirstName} {LectorLastName}";
 		public string CourseName { get; set; }
-		public double Rating { get; set; }
+		public double LessonRating { get; set; }
 	}
 }
